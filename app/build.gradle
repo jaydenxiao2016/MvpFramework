@@ -9,7 +9,7 @@ android {
     compileSdkVersion project.ext.compileSdkVersion
     buildToolsVersion project.ext.buildToolsVersion
     defaultConfig {
-        applicationId project.ext.applicationReleaseId
+        applicationId project.ext.applicationDebugId
         minSdkVersion project.ext.minSdkVersion
         targetSdkVersion project.ext.targetSdkVersion
         versionCode project.ext.versionCode
@@ -36,7 +36,7 @@ android {
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
                         //这里修改apk文件名
-                        def fileName = "MvpFramework-${variant.productFlavors[0].name}-${defaultConfig.versionName}-${releaseTime()}.apk"
+                        def fileName = "MvpFramework-${defaultConfig.versionName}-${releaseTime()}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
                     }
                 }
@@ -49,28 +49,24 @@ android {
             shrinkResources false
         }
     }
-
     /*多版本打包配置*/
     productFlavors {
         JDebug {
             applicationId project.ext.applicationDebugId
+            buildConfigField "String", "BASE_URL", "\"https://JDebug.com\""
             manifestPlaceholders = [
-                    app_name: "debug包MvpFramework"
-            ]
-        }
-        JDev {
-            applicationId project.ext.applicationDevId
-            manifestPlaceholders = [
-                    app_name: "Dev包MvpFramework"
+                    app_name: project.ext.debugAppName
             ]
         }
         JRelease {
             applicationId project.ext.applicationReleaseId
+            buildConfigField "String", "BASE_URL", "\"https://JRelease.com\""
             manifestPlaceholders = [
-                    app_name: "Release包MvpFramework"
+                    app_name: project.ext.ReleaseAppName
             ]
         }
     }
+
 
 }
 

@@ -2,6 +2,7 @@ package com.jaydenxiao.mvpframework.api;
 
 import com.jaydenxiao.common.https.MultipartBodyUtils;
 import com.jaydenxiao.common.https.RetrofitManager;
+import com.jaydenxiao.mvpframework.BuildConfig;
 import com.jaydenxiao.mvpframework.bean.CommonResponse;
 
 import java.util.HashMap;
@@ -21,7 +22,7 @@ public class ApiServiceManager {
      * 登录模块
      */
     private static final String URL_LOGIN = "mobileAction!login.action";
-    protected static final ApiService service = RetrofitManager.getRetrofit().create(ApiService.class);
+    protected static final ApiService service = RetrofitManager.getRetrofit(BuildConfig.BASE_URL).create(ApiService.class);
 
     //静态内部类创建单例
     private static class SingletonHolder {

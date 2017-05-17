@@ -34,21 +34,9 @@ public class BaseAppConfig {
 
     public static final String DEBUG_TAG = "logger";// LogCat的标记
     /**
-     * 是否是测试环境
-     */
-    public static final boolean IS_Test=false;
-    /**
      * 图片服务器地址
      */
     public static final String IMAGE_SERVER="";
-    /**
-     * 生产环境
-     */
-    public static final String API_SERVER="";
-    /**
-     * 测试环境
-     */
-    public static final String API_TEST_SERVER="";
     /**
      * 根路径
      */

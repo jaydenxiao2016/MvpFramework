@@ -8,6 +8,7 @@ project.ext {
     versionName ="1.0.0"
     supportVersion= "25.3.0"
     applicationDebugId = "com.jaydenxiao.mvpframework.bebug"
-    applicationDevId = "com.jaydenxiao.mvpframework.dev"
+    debugAppName="debugAPP名字"
     applicationReleaseId = "com.jaydenxiao.mvpframework"
+    ReleaseAppName="ReleaseAPP名字"
 }

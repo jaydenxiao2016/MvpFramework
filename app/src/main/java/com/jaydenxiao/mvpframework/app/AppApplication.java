@@ -13,7 +13,7 @@ public class AppApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         //捕获异常
-        if (!BuildConfig.LOG_DEBUG&&!BaseAppConfig.IS_Test)  {//release模式
+        if (!BuildConfig.LOG_DEBUG)  {//release模式
             CrashHandler crashHandlerBiz = CrashHandler.getInstance();
             crashHandlerBiz.init(getApplicationContext());
         }

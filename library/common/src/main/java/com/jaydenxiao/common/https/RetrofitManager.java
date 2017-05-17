@@ -6,7 +6,6 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.jaydenxiao.common.baseapp.BaseAppConfig;
 import com.jaydenxiao.common.baseapp.BaseApplication;
 import com.jaydenxiao.common.commonutils.LogUtils;
 import com.jaydenxiao.common.commonutils.NetWorkUtils;
@@ -38,9 +37,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitManager {
     //读超时长，单位：毫秒
-    private static final int READ_TIME_OUT = 1000*60*30;
+    private static final int READ_TIME_OUT = 1000*60*10;
     //连接时长，单位：毫秒
     private static final int CONNECT_TIME_OUT = 60000;
+    private static volatile RetrofitManager intstance;
     private Retrofit retrofit;
 
     /*************************缓存设置*********************/
@@ -144,15 +144,20 @@ public class RetrofitManager {
             return true;
         }
     }
-
-    //静态内部类创建单例
-    private static class SingletonHolder {
-        private static final RetrofitManager INSTANCE = new RetrofitManager(BaseAppConfig.IS_Test ? BaseAppConfig.API_TEST_SERVER : BaseAppConfig.API_SERVER);
+    //获取单例
+    public static RetrofitManager getInstance(String baseUrl){
+        if(intstance==null){
+            synchronized (RetrofitManager.class){
+                if(intstance==null){
+                    intstance=new RetrofitManager(baseUrl);
+                }
+            }
+        }
+        return intstance;
     }
-
     //获取Retrofit
-    public static Retrofit getRetrofit() {
-        return SingletonHolder.INSTANCE.retrofit;
+    public static Retrofit getRetrofit(String baseUrl) {
+        return getInstance(baseUrl).retrofit;
     }
 
     /**
