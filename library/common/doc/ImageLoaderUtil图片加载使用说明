@@ -1,0 +1,90 @@
+
+图片加载管理类ImageLoaderUtil使用说明（采用glide框架）
+
+public class ImageLoaderUtils {
+
+         /**
+         * @param context   上下文
+         * @param imageView
+         * @param url       本地或在线url
+         */
+        public static void display(Context context, ImageView imageView, String url) {
+            ...
+        }
+
+        /**
+         * @param context   上下文
+         * @param imageView
+         * @param resId     本地资源id
+         */
+        public static void display(Context context, ImageView imageView, int resId) {
+           ...
+        }
+
+        /**
+         * @param context   上下文
+         * @param imageView
+         * @param file      file文件
+         */
+        public static void display(Context context, ImageView imageView, File file) {
+           ...
+        }
+
+        /**
+         * 根据url显示圆形图片
+         *
+         * @param context   上下文
+         * @param imageView
+         * @param url       本地货在线url
+         */
+        public static void displayRound(Context context, ImageView imageView, String url) {
+           ...
+        }
+
+        /**
+         * 根据本地资源id显示圆形图片
+         *
+         * @param context
+         * @param imageView
+         * @param resId
+         */
+        public static void displayRound(Context context, ImageView imageView, int resId) {
+           ...
+        }
+
+        /**
+         * 显示小缩略图
+         *
+         * @param context   上下文
+         * @param imageView
+         * @param url       本地或在线url
+         */
+        public static void displaySmallPhoto(Context context, ImageView imageView, String url) {
+           ...
+        }
+
+        /**
+         * 显示大图
+         *
+         * @param context   上下文
+         * @param imageView
+         * @param url       本地或在线url
+         */
+        public static void displayBigPhoto(Context context, ImageView imageView, String url) {
+           ...
+        }
+
+
+        /**
+         * @param context     上下文
+         * @param imageView
+         * @param url         本地或在线url
+         * @param placeholder 自定义设置占位图片
+         * @param error       自定义设置占位图片
+         */
+        public static void display(Context context, ImageView imageView, String url, int placeholder, int error) {
+           ...
+        }
+
+
+}

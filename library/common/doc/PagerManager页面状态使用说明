@@ -1,0 +1,136 @@
+
+内嵌状态页面
+
+使用说明:
+
+一.application初始化：
+PageManager.initInApp(this);
+
+
+二.activity、fragment、view中使用
+
+1.初始化：
+初始化情况一：
+/**
+ * @param container              必须为activity,fragment或者view.如果是view,则该view对象必须有parent,一般传listview或者gridview或者recyclerview
+ * @param reloadListener         点击重试的动作
+ * @param isShowLoadingOrContent 初始化后是否显示加载中状态
+ * @return
+ */
+public static PageManager init(final Object container, boolean isShowLoadingOrContent, final ReloadListener reloadListener) {
+   ...
+    return manager;
+}
+初始化情况二：
+   /**
+   * @param container              必须为activity,fragment或者view.如果是view,则该view对象必须有parent
+   * @param reloadListener         点击重试的动作
+   * @param loadingMsg             加载中状态的文字提示
+   * @param isShowLoadingOrContent 第一次是显示loading(true)还是content(false)
+   * @return
+   */
+  public static PageManager init(final Object container, boolean isShowLoadingOrContent,final CharSequence loadingMsg,final ReloadListener reloadListener) {
+      ...
+      return manager;
+  }
+
+ 2.按需切换页面状态
+  1）加载中
+  pageManager.showLoading("正在加载通讯线...");
+  或者
+  pageManager.showLoading();
+
+  2）数据为空
+  pageManager.showEmpty("数据为空哦");
+  或者
+  pageManager.showEmpty();
+
+  3）网络错误
+  pageManager.showError("网络错误了....");
+  或者
+  pageManager.showError();
+
+  4）显示内容
+  pageManager.showContent();
+
+
+三、重要的事情说三遍，
+以上方法已全部封装在baseActivity和baseFragment中，直接调用即可，具体可参考样例代码
+以上方法已全部封装在baseActivity和baseFragment中，直接调用即可，具体可参考样例代码
+以上方法已全部封装在baseActivity和baseFragment中，直接调用即可，具体可参考样例代码
+
+
+
+样例代码如下：
+
+public class PhonesActivity extends BaseActivity<IPhonesView, PhonesPresenter> implements IPhonesView, View.OnClickListener {
+
+    private LinearLayout lltSearchIcon;
+    private EditText etSearch;
+    private ListView lvPhoneList;
+    private PhoneListAdapter phoneListAdapter;
+    private TextView tvCenter;
+
+    @Override
+    protected void initVariables() {
+
+    }
+
+    @Override
+    protected IPhonesView initAttachView() {
+        return this;
+    }
+
+    @Override
+    protected void initView(Bundle saveInstanceState) {
+        setContentView(R.layout.activity_phones);
+        findViewAndSetListener();
+    }
+
+    private void findViewAndSetListener() {
+       ...
+    }
+    @Override
+    public void initLoadData() {
+        phoneListAdapter = new PhoneListAdapter(this, null);
+        phoneListAdapter.setSectionIndexer(null);
+        lvPhoneList.setAdapter(phoneListAdapter);
+        //初始化状态页面
+        initPagerManager(lvPhoneList, true, new PageManager.ReloadListener() {
+            @Override
+            public void reload() {
+            //失败时，点击重新加载回调
+            mPresenter.loadData(etSearch.getText().toString());
+            }
+        });
+        mPresenter.loadData(null);
+    }
+
+    @Override
+    public void showProgress() {
+        //切换状态页面为
+        showPagerManagerLoading();
+    }
+
+    @Override
+    public void showSuccess() {
+        //切换状态页面为当前显示内容
+        showPagerManagerContent();
+    }
+
+    @Override
+    public void showFailure() {
+        //切换状态页面为错误界面
+        showPagerManagerError();
+    }
+
+    @Override
+    public void showResult(List<ContactsEntity> contactsList, SectionIndexer sectionIndexer) {
+        phoneListAdapter.setSectionIndexer(sectionIndexer);
+        phoneListAdapter.replaceAllData(contactsList);
+    }
+
+}
+
+
+

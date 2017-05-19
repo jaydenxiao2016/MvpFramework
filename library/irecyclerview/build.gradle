@@ -1,20 +1,20 @@
 apply plugin: 'com.android.library'
-apply from: "${rootProject.rootDir}/common_config.gradle"
 
 android {
-    compileSdkVersion project.ext.compileSdkVersion
-    buildToolsVersion project.ext.buildToolsVersion
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
     defaultConfig {
-        minSdkVersion  project.ext.minSdkVersion
-        targetSdkVersion  project.ext.targetSdkVersion
-        versionCode  project.ext.versionCode
-        versionName  project.ext.versionName
+        minSdkVersion  14
+        targetSdkVersion  25
+        versionCode  1
+        versionName  "1.0"
     }
     aaptOptions {
         cruncherEnabled = false
         useNewCruncher = false
     }
 }
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')

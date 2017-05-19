@@ -6,7 +6,8 @@ package com.jaydenxiao.mvpframework.app;
  * on 2016.09.10:44
  */
 public class AppConstant {
-
+    //当前用户
+    public static final String USER_KEY="USER_KEY";
     //当前城市key
     public static final String CITY="CITY";
     //当前城市id key

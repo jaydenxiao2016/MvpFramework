@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp100"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp30"
+                android:background="@mipmap/ic_launcher_round" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp10"
+                android:hint="@string/str_phone"
+                android:textSize="@dimen/font_normal"
+                app:met_clearButton="true"
+                app:met_errorColor="@color/red"
+                app:met_floatingLabel="highlight" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp10"
+                android:hint="@string/str_password"
+                android:inputType="textPassword"
+                android:textSize="@dimen/font_normal"
+                app:met_clearButton="true"
+                app:met_errorColor="@color/red"
+                app:met_floatingLabel="highlight" />
+
+            <Button
+                android:id="@+id/bt_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp30"
+                android:background="@drawable/selector_gray2blue"
+                android:enabled="true"
+                android:text="@string/str_login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_normal2" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_forget_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/view_gad"
+                    android:padding="@dimen/dp10"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:text="@string/str_forget_password"
+                    android:textColor="@drawable/selector_font_gray2deepgray"
+                    android:textSize="@dimen/font_small" />
+
+                <View
+                    android:id="@+id/view_gad"
+                    android:layout_width="@dimen/dp1"
+                    android:background="@color/light_gray"
+                    android:layout_height="@dimen/dp15"
+                    android:layout_centerInParent="true" />
+
+                <TextView
+                    android:id="@+id/tv_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/view_gad"
+                    android:padding="@dimen/dp10"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:text="@string/str_registor"
+                    android:textColor="@drawable/selector_font_gray2deepgray"
+                    android:textSize="@dimen/font_small" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_bottom_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp60"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/dp20"
+            android:text="@string/str_copyright"
+            android:textSize="@dimen/font_small" />
+    </LinearLayout>
+</ScrollView>
+

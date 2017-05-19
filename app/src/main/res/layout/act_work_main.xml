@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp200">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dp40"
+            android:background="@color/main_color"
+            android:scaleType="fitXY" />
+
+        <com.jaydenxiao.common.commonwidget.RoundedImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="@dimen/dp80"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/dp7"
+            android:layout_marginLeft="@dimen/dp30"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp40"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_toRightOf="@+id/img_avatar"
+            android:gravity="center"
+            android:text="郭总"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_normal2" />
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginTop="@dimen/dp6"
+            android:layout_toRightOf="@+id/img_avatar"
+            android:gravity="center"
+            android:text="02001"
+            android:textColor="@color/gray_deep"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/model_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp30"
+            android:text="开发模式"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_normal3" />
+    </RelativeLayout>
+
+    <com.aspsine.irecyclerview.IRecyclerView
+        android:id="@+id/irec"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingTop="@dimen/dp20" />
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.jaydenxiao.common.base;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -283,6 +284,45 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
      */
     public void showLongToast(String text,int duration) {
         ToastUitl.show(text,duration);
+    }
+
+    /**
+     * 通过Class跳转界面
+     **/
+    public void startActivity(Class<?> cls) {
+        startActivity(cls, null);
+    }
+
+    /**
+     * 通过Class跳转界面
+     **/
+    public void startActivityForResult(Class<?> cls, int requestCode) {
+        startActivityForResult(cls, null, requestCode);
+    }
+
+    /**
+     * 含有Bundle通过Class跳转界面
+     **/
+    public void startActivityForResult(Class<?> cls, Bundle bundle,
+                                       int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 含有Bundle通过Class跳转界面
+     **/
+    public void startActivity(Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
     }
 
     @Override

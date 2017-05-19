@@ -1,0 +1,25 @@
+
+BadgeView使用说明：
+
+有三种模式：
+
+1.显示数字
+BadgeView badgeNum = new BadgeView(this, button);
+message_badge.showNum(10);
+
+2.显示红点（不带数字）
+BadgeView badgePoint = new BadgeView(this, button);
+message_badge.showRedPoint(10);
+
+3.显示文字三种模式
+BadgeView badgeString = new BadgeView(this, button);
+message_badge.showString("文字");
+
+另外：还可以自定义属性，如
+BadgeView badgeOther = new BadgeView(this, button);
+
+badgeOther.setBadgePosition(BadgeView.POSITION_TOP_RIGHT)  //小红点在目标view的位置，默认顶部右上角
+        .setBadgeBackgroundRes(R.drawable.badge_rectangle_bg) //小红点的背景图
+        .setBadgeMargin(23) //小红点里面数字的间距
+        .setBadgeMarginRedPoint(10) //小红点距离目标view的间距
+        .showNum(12);//显示未读条数

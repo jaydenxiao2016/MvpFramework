@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settingLine="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <!--    波浪背景和头像-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@drawable/selector_setting_bg"
+        android:paddingTop="@dimen/dp10">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_arrow_back_white"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center|top"
+            android:gravity="center"
+            android:text="@string/str_setting_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_normal2" />
+
+        <com.jaydenxiao.common.commonwidget.WaveView
+            android:id="@+id/wave_view"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_alignParentBottom="true" />
+
+        <com.jaydenxiao.common.commonwidget.RoundedImageView
+            android:id="@+id/img_logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:background="@color/white"
+            android:clickable="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_logo"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp15">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_name_with_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_normal2" />
+
+            <TextView
+                android:id="@+id/tv_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:text="@string/str_code_with_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_normal2" />
+        </LinearLayout>
+
+    </RelativeLayout>
+    <!--    基础信息设置-->
+    <View
+        style="@style/h_divider"
+        android:layout_height="@dimen/dp15"
+        android:background="@color/white" />
+
+    <com.hisign.hisignenvidence.widgets.SettingLine
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        settingLine:drawableLeft="@drawable/icon_personal_setting"
+        settingLine:drawableLeftVisible="true"
+        settingLine:leftText="个人设置" />
+    <View
+        style="@style/h_divider"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dp13" />
+    <com.hisign.hisignenvidence.widgets.SettingLine
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        settingLine:drawableLeft="@drawable/icon_news_setting"
+        settingLine:drawableLeftVisible="true"
+        settingLine:leftText="消息设置" />
+    <View
+        style="@style/h_divider"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dp13" />
+    <com.hisign.hisignenvidence.widgets.SettingLine
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        settingLine:drawableLeft="@drawable/icon_update"
+        settingLine:drawableLeftVisible="true"
+        settingLine:leftText="更新"
+        settingLine:rightTextVisible="true"
+        settingLine:rightText="当前版本：1.1.0" />
+    <View
+        style="@style/h_divider"
+        android:layout_height="@dimen/dp15" />
+    <com.hisign.hisignenvidence.widgets.SettingLine
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        settingLine:drawableLeft="@drawable/icon_about"
+        settingLine:drawableLeftVisible="true"
+        settingLine:leftText="关于"/>
+    <View
+        style="@style/h_divider"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dp13" />
+    <com.hisign.hisignenvidence.widgets.SettingLine
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        settingLine:drawableLeft="@drawable/icon_about"
+        settingLine:drawableLeftVisible="true"
+        settingLine:leftText="退出"/>
+</LinearLayout>

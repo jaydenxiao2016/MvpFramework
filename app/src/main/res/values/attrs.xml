@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="settingLine">
+        <attr name="drawableLeft" format="reference" /><!--左图标属性-->
+        <attr name="drawableLeftVisible" format="boolean" /><!--左图标是否显示属性-->
+        <attr name="leftText" format="string|reference" /><!--左字体属性-->
+        <attr name="leftTextColor" format="string|reference" /><!--左字体颜色属性-->
+        <attr name="leftTextSize" format="dimension" /><!--左字体大小属性-->
+        <attr name="leftTextVisible" format="boolean" /><!--左字体是否显示属性-->
+        <attr name="rightText" format="string|reference" /><!--右字体属性-->
+        <attr name="rightTextColor" format="string|reference" /><!--右字体颜色属性-->
+        <attr name="rightTextSize" format="dimension" /><!--右字体大小属性-->
+        <attr name="rightTextVisible" format="boolean" /><!--右字体是否显示属性-->
+    </declare-styleable>
+</resources>

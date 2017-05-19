@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="?android:attr/actionBarItemBackground"
+    android:layout_margin="@dimen/dp10"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp85"
+        android:layout_height="@dimen/dp85">
+
+        <ImageView
+            android:id="@+id/img_memu"
+            android:layout_width="@dimen/dp65"
+            android:layout_height="@dimen/dp65"
+            android:layout_margin="@dimen/dp10"
+            android:background="@drawable/work_menu_notread" />
+
+        <TextView
+            android:id="@+id/tv_not_read"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp22"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/badge_rectangle_bg"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dp5"
+            android:paddingLeft="@dimen/dp8"
+            android:paddingRight="@dimen/dp8"
+            android:text="5"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_small" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_memu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="菜单1"
+        android:textColor="@color/gray_deep"
+        android:textSize="@dimen/font_normal" />
+</LinearLayout>

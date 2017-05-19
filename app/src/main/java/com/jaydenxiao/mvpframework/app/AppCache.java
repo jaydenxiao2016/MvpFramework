@@ -2,6 +2,7 @@ package com.jaydenxiao.mvpframework.app;
 
 import android.text.TextUtils;
 
+import com.jaydenxiao.common.commonutils.JsonUtils;
 import com.jaydenxiao.common.commonutils.SPUtils;
 import com.jaydenxiao.mvpframework.bean.User;
 
@@ -30,7 +31,23 @@ public class AppCache {
         }
         return instance;
     }
+    public User getUser() {
+        if (user == null) {
+            //获取本地
+            String json = SPUtils.getSharedStringData(AppConstant.USER_KEY);
+            if (TextUtils.isEmpty(json)) {
+                return null;
+            }
+            user = (User) JsonUtils.fromJson(json, User.class);
+        }
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+        //保存到本地
+        SPUtils.setSharedStringData(AppConstant.USER_KEY, JsonUtils.toJson(user));
+    }
 
     /**
      * 获取当前城市
