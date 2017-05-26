@@ -1,0 +1,53 @@
+apply from: "${rootProject.rootDir}/common_config.gradle"
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
+    defaultConfig {
+        minSdkVersion  project.ext.minSdkVersion
+        targetSdkVersion  project.ext.targetSdkVersion
+        versionCode  project.ext.versionCode
+        versionName  project.ext.versionName
+    }
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile "com.android.support:support-v4:${project.ext.supportVersion}"
+    compile "com.android.support:recyclerview-v7:${project.ext.supportVersion}"
+    compile "com.android.support:support-annotations:${project.ext.supportVersion}"
+    compile "com.android.support:design:${project.ext.supportVersion}"
+    compile "com.android.support:cardview-v7:${project.ext.supportVersion}"
+    compile "com.android.support:appcompat-v7:${project.ext.supportVersion}"
+    //retrofit和rxjava
+    compile 'com.squareup.okhttp3:okhttp:3.4.0-RC1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.0-RC1'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxjava:1.1.3'
+    //分包
+    compile 'com.android.support:multidex:1.0.0'
+    //json解析
+    compile 'com.alibaba:fastjson:1.2.8'
+    //图片缩放
+    compile 'com.commit451:PhotoView:1.2.4'
+    //打印日志
+    compile 'com.orhanobut:logger:1.13'
+    //显示图片框架
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    //view注解
+    compile 'com.jakewharton:butterknife:7.0.1'
+    //tablayout菜单栏 https://github.com/H07000223/FlycoTabLayout
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
+
+}
+
+

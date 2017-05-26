@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">二维码生成和扫描</string>
+    <string name="scan_tips">\"将二维码图片对准扫描框即可自动扫描\"</string>
+    <string name="tip">请对准扫描出光口</string>
+    <string name="data">数据:</string>
+    <string name="clean">清除</string>
+    <string name="sacaning">扫描</string>
+    <string name="scan_continue_cb">连续扫描</string>
+    <string name="operating_wait">初始化中，请稍后</string>
+    <string name="scan_init_failure_info">扫描头协议写入失败，请重试!</string>
+</resources>

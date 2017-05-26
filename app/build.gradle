@@ -1,0 +1,89 @@
+apply from: "${rootProject.rootDir}/common_config.gradle"
+apply plugin: 'com.android.application'
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
+    defaultConfig {
+        applicationId project.ext.applicationReleaseId
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
+        versionCode project.ext.versionCode
+        versionName project.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //apk命名
+            android.applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        //这里修改apk文件名
+                        def fileName = "MvpFramework-${variant.productFlavors[0].name}-${defaultConfig.versionName}-${releaseTime()}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+        }
+    }
+
+    /*多版本打包配置*/
+    productFlavors {
+        JDebug {
+            applicationId project.ext.applicationDebugId
+            manifestPlaceholders = [
+                    app_name: "debug包MvpFramework"
+            ]
+        }
+        JDev {
+            applicationId project.ext.applicationDevId
+            manifestPlaceholders = [
+                    app_name: "Dev包MvpFramework"
+            ]
+        }
+        JRelease {
+            applicationId project.ext.applicationReleaseId
+            manifestPlaceholders = [
+                    app_name: "Release包MvpFramework"
+            ]
+        }
+    }
+
+}
+
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:${project.ext.supportVersion}"
+    compile project(':library:irecyclerview')
+    compile project(':library:zxingScan')
+    testCompile 'junit:junit:4.12'
+
+}

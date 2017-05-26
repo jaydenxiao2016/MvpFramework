@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply from: "${rootProject.rootDir}/common_config.gradle"
+
+android {
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
+    defaultConfig {
+        minSdkVersion  project.ext.minSdkVersion
+        targetSdkVersion  project.ext.targetSdkVersion
+        versionCode  project.ext.versionCode
+        versionName  project.ext.versionName
+    }
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':library:common')
+}

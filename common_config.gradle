@@ -1,0 +1,13 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+project.ext {
+    compileSdkVersion = 25
+    buildToolsVersion = "25.0.2"
+    minSdkVersion = 14
+    targetSdkVersion = 25
+    versionCode =100
+    versionName ="1.0.0"
+    supportVersion= "25.3.0"
+    applicationDebugId = "com.jaydenxiao.mvpframework.bebug"
+    applicationDevId = "com.jaydenxiao.mvpframework.dev"
+    applicationReleaseId = "com.jaydenxiao.mvpframework"
+}

@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+version = "1.1.0" // 版本号
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '25.0.0'
+    resourcePrefix "imgsel"
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 5
+        versionName "1.1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.yuyh.easyadapter:library:1.0.0'
+    compile project(':library:common')
+}
+
