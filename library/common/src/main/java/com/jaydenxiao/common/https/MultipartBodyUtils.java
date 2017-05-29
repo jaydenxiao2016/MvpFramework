@@ -1,8 +1,5 @@
 package com.jaydenxiao.common.https;
 
-import com.jaydenxiao.common.commonutils.LogUtils;
-import com.yuyh.library.imgsel.utils.FileUtils;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,10 +48,10 @@ public class MultipartBodyUtils {
         // 将RequestBody封装成MultipartBody.Part类型（同样是okhttp的）
         MultipartBody.Part part = MultipartBody.Part.
                 createFormData(key, file.getName(), requestBody);
-        LogUtils.logd("上传图片大小", FileUtils.formatFileSizeToString(file.length())+file);
         return part;
     }
-    public static HashMap<String, RequestBody> RequestBody(HashMap<String, String> box){
+
+    public static HashMap<String, RequestBody> RequestBody(HashMap<String, String> box) {
         HashMap<String, RequestBody> map = new HashMap<>();
         Iterator iter = box.entrySet().iterator();
         while (iter.hasNext()) {

@@ -1,11 +1,8 @@
 package com.jaydenxiao.mvpframework.api;
 
-import com.jaydenxiao.common.commonutils.DesJsUtil;
 import com.jaydenxiao.common.https.MultipartBodyUtils;
 import com.jaydenxiao.common.https.RetrofitManager;
-import com.jaydenxiao.mvpframework.app.AppCache;
 import com.jaydenxiao.mvpframework.bean.CommonResponse;
-import com.jaydenxiao.mvpframework.bean.User;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -70,17 +67,7 @@ public class ApiServiceManager {
      * 获取封装基础参数的hashmap
      */
     private HashMap<String, String> getBasicMap(String type) {
-        User user = AppCache.getInstance().getUser();
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("type", type);
-        hashMap.put("mobileUserId", DesJsUtil.encode(""));
-        hashMap.put("mobilePwd", DesJsUtil.encode(""));
-        if (user != null) {
-            hashMap.put("userId", user.getUserId());
-            hashMap.put("companyId", user.getCompanyId());
-            hashMap.put("companyCN", user.getCompanyName());
-            hashMap.put("subCompanyId", user.getSubCompanyId());
-        }
         return hashMap;
     }
 }
