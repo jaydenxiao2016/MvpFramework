@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.jaydenxiao.common.base.BaseActivity;
 import com.jaydenxiao.common.commonutils.ImageLoaderUtils;
 import com.jaydenxiao.common.commonwidget.RoundedImageView;
+import com.jaydenxiao.common.commonwidget.StatusBarCompat;
 import com.jaydenxiao.common.commonwidget.WaveView;
 import com.jaydenxiao.mvpframework.R;
 
@@ -45,7 +46,7 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        SetTranslanteBar();
+        StatusBarCompat.setTranslucent(this);
         //设置头像
         ImageLoaderUtils.displayAvatar(this, imgLogo, "");
     }

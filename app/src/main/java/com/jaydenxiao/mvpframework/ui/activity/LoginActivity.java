@@ -2,7 +2,6 @@ package com.jaydenxiao.mvpframework.ui.activity;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -71,7 +70,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        SetStatusBarColor(ContextCompat.getColor(this, R.color.black));
         //阀值设置为屏幕高度的1/3
         keyHeight = DisplayUtil.getScreenHeight(this) / 3;
     }

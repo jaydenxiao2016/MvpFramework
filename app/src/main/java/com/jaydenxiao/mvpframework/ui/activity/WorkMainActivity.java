@@ -14,6 +14,7 @@ import com.jaydenxiao.common.base.BaseActivity;
 import com.jaydenxiao.common.commonutils.FormatUtil;
 import com.jaydenxiao.common.commonutils.ImageLoaderUtils;
 import com.jaydenxiao.common.commonwidget.RoundedImageView;
+import com.jaydenxiao.common.commonwidget.StatusBarCompat;
 import com.jaydenxiao.mvpframework.R;
 import com.jaydenxiao.mvpframework.app.AppCache;
 import com.jaydenxiao.mvpframework.bean.User;
@@ -58,7 +59,7 @@ public class WorkMainActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        SetTranslanteBar();
+        StatusBarCompat.setTranslucent(this);
         user = AppCache.getInstance().getUser();
         if (user == null)
             return;

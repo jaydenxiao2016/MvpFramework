@@ -94,7 +94,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         // 设置竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // 默认着色状态栏
-        SetStatusBarColor();
+        StatusBarCompat.setColor(this, ContextCompat.getColor(this, R.color.main_color));
     }
 
 
@@ -109,31 +109,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     public abstract void initView(Bundle savedInstanceState);
 
     /********************** 子类实现 end*****************************/
-
-
-    /******************************状态栏着色公开调用方法begin*********************************/
-    /**
-     * 着色状态栏（4.4以上系统有效）
-     */
-    protected void SetStatusBarColor() {
-        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.main_color));
-    }
-
-    /**
-     * 着色状态栏（4.4以上系统有效）
-     */
-    protected void SetStatusBarColor(int color) {
-        StatusBarCompat.setStatusBarColor(this, color);
-    }
-
-    /**
-     * 沉浸状态栏（4.4以上系统有效）
-     */
-    protected void SetTranslanteBar() {
-        StatusBarCompat.translucentStatusBar(this);
-    }
-
-    /******************************状态页面公开调用方法end*********************************/
 
 
     /**

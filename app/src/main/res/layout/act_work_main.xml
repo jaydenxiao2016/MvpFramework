@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:orientation="vertical">
 
@@ -36,7 +37,7 @@
             android:layout_marginLeft="@dimen/dp5"
             android:layout_toRightOf="@+id/img_avatar"
             android:gravity="center"
-            android:text="郭总"
+            tools:text="名字"
             android:textColor="@color/white"
             android:textSize="@dimen/font_normal2" />
 
@@ -50,7 +51,7 @@
             android:layout_marginTop="@dimen/dp6"
             android:layout_toRightOf="@+id/img_avatar"
             android:gravity="center"
-            android:text="02001"
+            tools:text="编号"
             android:textColor="@color/gray_deep"
             android:textSize="@dimen/font_normal" />
 
@@ -60,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp30"
-            android:text="开发模式"
+            tools:text="开发模式"
             android:visibility="gone"
             android:textColor="@color/white"
             android:textSize="@dimen/font_normal3" />

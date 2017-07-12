@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -30,7 +31,7 @@
             android:layout_marginTop="@dimen/dp5"
             android:paddingLeft="@dimen/dp8"
             android:paddingRight="@dimen/dp8"
-            android:text="5"
+            tools:text="5"
             android:textColor="@color/white"
             android:textSize="@dimen/font_small" />
     </RelativeLayout>
@@ -39,7 +40,7 @@
         android:id="@+id/tv_memu_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="菜单1"
+        tools:text="菜单1"
         android:textColor="@color/gray_deep"
         android:textSize="@dimen/font_normal" />
 </LinearLayout>

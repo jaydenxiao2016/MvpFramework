@@ -19,7 +19,6 @@ import java.io.Writer;
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.lang.reflect.Field;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +40,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
     private Map<String, String> infos = new HashMap<String, String>();
 
     // 用于格式化日期,作为日志文件名的一部分
-    private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+    private DateFormat formatter = DateFormat.getTimeInstance();
 
     /**
      * 保证只有一个CrashHandler实例

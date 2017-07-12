@@ -3,18 +3,15 @@ package com.jaydenxiao.common.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jaydenxiao.common.R;
 import com.jaydenxiao.common.basemvp.BasePresenter;
 import com.jaydenxiao.common.baserx.RxManager;
 import com.jaydenxiao.common.commonutils.TUtil;
 import com.jaydenxiao.common.commonutils.ToastUitl;
 import com.jaydenxiao.common.commonwidget.LoadingDialog;
-import com.jaydenxiao.common.commonwidget.StatusBarCompat;
 import com.jaydenxiao.common.commonwidget.pagermanage.PageManager;
 
 import butterknife.ButterKnife;
@@ -101,31 +98,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     public abstract void initView(Bundle savedInstanceState);
 
     /********************** 子类实现 end*****************************/
-
-    /******************************状态栏着色公开调用方法begin*********************************/
-    /**
-     * 着色状态栏（4.4以上系统有效）
-     */
-    protected void SetStatusBarColor() {
-        StatusBarCompat.setStatusBarColor(getActivity(), ContextCompat.getColor(getActivity(), R.color.main_color));
-    }
-
-    /**
-     * 着色状态栏（4.4以上系统有效）
-     */
-    protected void SetStatusBarColor(int color) {
-        StatusBarCompat.setStatusBarColor(getActivity(), color);
-    }
-
-    /**
-     * 沉浸状态栏（4.4以上系统有效）
-     */
-    protected void SetTranslanteBar() {
-        StatusBarCompat.translucentStatusBar(getActivity());
-    }
-
-    /******************************状态页面公开调用方法end*********************************/
-
 
     /**
      * 获取rxmanager

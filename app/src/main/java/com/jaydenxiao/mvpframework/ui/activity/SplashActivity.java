@@ -44,7 +44,6 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        SetTranslanteBar();
         //延时2s打开主界面
         getRxManager().add(Observable.timer(2, TimeUnit.SECONDS).compose(RxSchedulers.<Long>io_main()).subscribe(new Action1<Long>() {
             @Override
