@@ -46,7 +46,6 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        StatusBarCompat.setTranslucent(this);
         //设置头像
         ImageLoaderUtils.displayAvatar(this, imgLogo, "");
     }
