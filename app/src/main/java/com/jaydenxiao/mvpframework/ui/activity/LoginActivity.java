@@ -1,6 +1,5 @@
 package com.jaydenxiao.mvpframework.ui.activity;
 
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +9,13 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.jaydenxiao.common.base.BaseActivity;
-import com.jaydenxiao.common.commonutils.DisplayUtil;
-import com.jaydenxiao.common.commonutils.FormatUtil;
 import com.jaydenxiao.mvpframework.R;
 import com.jaydenxiao.mvpframework.ui.contract.LoginContract;
 import com.jaydenxiao.mvpframework.ui.presenter.LoginPresenter;
+import com.jaydenxiao.common.base.BaseActivity;
+import com.jaydenxiao.common.commonutils.FormatUtil;
+import com.jaydenxiao.common.commonutils.SoftKeyBoardStateHelper;
+import com.nineoldandroids.animation.ValueAnimator;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.Bind;
@@ -25,12 +25,13 @@ import butterknife.OnClick;
 /**
  * 类名：LoginActivity.java
  * 描述：登录界面
+ * 公司：北京海鑫科鑫高科技股份有限公司
  * 作者：xsf
  * 创建时间：2017/5/18
  * 最后修改时间：2017/5/18
  */
 
-public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View, View.OnLayoutChangeListener {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View{
 
 
     @Bind(R.id.met_user_name)
@@ -54,8 +55,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Bind(R.id.iv_logo)
     ImageView ivLogo;
 
-    //软件盘弹起后所占高度阀值
-    private int keyHeight = 0;
+    private SoftKeyBoardStateHelper mSoftKeyBoardStateHelper;
+    private SoftKeyBoardStateHelper.SoftKeyboardStateListener mKeyboardStateListener;
 
 
     @Override
@@ -70,8 +71,18 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        //阀值设置为屏幕高度的1/3
-        keyHeight = DisplayUtil.getScreenHeight(this) / 3;
+        mSoftKeyBoardStateHelper=new SoftKeyBoardStateHelper(slRoot);
+        mSoftKeyBoardStateHelper.addSoftKeyboardStateListener(mKeyboardStateListener=new SoftKeyBoardStateHelper.SoftKeyboardStateListener() {
+            @Override
+            public void onSoftKeyboardOpened(int keyboardHeightInPx) {
+                scaleAnimation(ivLogo.getHeight(), ivLogo.getHeight() / 2, ivLogo);
+            }
+
+            @Override
+            public void onSoftKeyboardClosed() {
+                scaleAnimation(ivLogo.getHeight(), ivLogo.getHeight() * 2, ivLogo);
+            }
+        });
     }
 
     /**
@@ -98,30 +109,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             return false;
         } else {
             return true;
-        }
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        slRoot.addOnLayoutChangeListener(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        slRoot.removeOnLayoutChangeListener(this);
-    }
-
-    @Override
-    public void onLayoutChange(View v, int left, int top, int right,
-                               int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-        //只要控件将Activity向上推的高度超过了1/3屏幕高，就认为软键盘弹起
-        if (oldBottom != 0 && bottom != 0 && (oldBottom - bottom > keyHeight)) {
-            scaleAnimation(ivLogo.getHeight(), ivLogo.getHeight() / 2, ivLogo);
-        } else if (oldBottom != 0 && bottom != 0 && (bottom - oldBottom > keyHeight)) {
-            scaleAnimation(ivLogo.getHeight(), ivLogo.getHeight() * 2, ivLogo);
         }
     }
 
@@ -156,4 +143,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         finish();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSoftKeyBoardStateHelper.removeSoftKeyboardStateListener(mKeyboardStateListener);
+    }
 }

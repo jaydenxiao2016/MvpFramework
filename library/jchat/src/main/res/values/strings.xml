@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">jchat</string>
+    <string name="str_offline_prompt">下线提示</string>
+    <string name="str_offline_password">您的账号已经修改密码，您被迫下线</string>
+    <string name="str_offline_device">您的账号已经在另一台设备上登录，您被迫下线</string>
+    <string name="str_offline_deleted">您的账号已经被删除，您被迫下线</string>
+    <string name="str_setting_confirm">确定</string>
+</resources>

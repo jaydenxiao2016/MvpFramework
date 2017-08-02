@@ -79,6 +79,7 @@ dependencies {
     })
     compile project(':library:irecyclerview')
     compile project(':library:zxingScan')
+    compile project(':library:jchat')
     testCompile 'junit:junit:4.12'
 
 }

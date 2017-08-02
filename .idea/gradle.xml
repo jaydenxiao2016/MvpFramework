@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/library/common" />
             <option value="$PROJECT_DIR$/library/irecyclerview" />
+            <option value="$PROJECT_DIR$/library/jchat" />
             <option value="$PROJECT_DIR$/library/zxingScan" />
           </set>
         </option>
