@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">baidu</string>
+    <string name="str_baidu_downloaded_city">已下载城市</string>
+    <string name="str_baidu_check">查看</string>
+    <string name="str_baidu_location_title">百度定位</string>
+    <string name="str_baidu_download_offmap_title">下载离线地图</string>
+    <string name="str_baidu_download_hint">请输入要下载的城市</string>
+    <string name="str_lot">经度：%1$s</string>
+    <string name="str_lat">纬度：%1$s</string>
+    <string name="str_address">地址：%1$s</string>
+</resources>

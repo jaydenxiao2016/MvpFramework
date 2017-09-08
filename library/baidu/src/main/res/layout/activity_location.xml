@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.jaydenxiao.common.commonwidget.NormalTitleBar
+        android:id="@+id/normal_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.5">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"/>
+
+        <ImageView
+            android:id="@+id/baidu_map_location_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/baidu_map_location_icon_view"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/daohtb" />
+
+        <View
+            android:id="@+id/baidu_map_location_icon_view"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_translate"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_top_menu"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/rg_map_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_normal_type"
+                        android:layout_width="@dimen/dp75"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="普通图"
+                        android:textColor="@color/gray_deep"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_statellite_type"
+                        android:layout_width="@dimen/dp75"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="卫星图"
+                        android:textColor="@color/gray_deep"/>
+                </RadioGroup>
+
+                <CheckBox
+                    android:id="@+id/traffice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:onClick="setTraffic"
+                    android:text="路况图"
+                    android:textColor="@color/gray_deep"/>
+
+                <CheckBox
+                    android:id="@+id/baiduHeatMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:onClick="setBaiduHeatMap"
+                    android:text="百度城市热力图"
+                    android:textColor="@color/gray_deep"/>
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/rg_map_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_top_menu"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_normal"
+                    android:layout_width="@dimen/dp75"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="普通"
+                    android:textColor="@color/gray_deep"/>
+
+                <RadioButton
+                    android:id="@+id/rb_following"
+                    android:layout_width="@dimen/dp75"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    android:text="跟随"
+                    android:textColor="@color/gray_deep"/>
+
+                <RadioButton
+                    android:id="@+id/rb_compass"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="罗盘"
+                    android:textColor="@color/gray_deep"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/bt_current_location"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp50"
+            android:layout_marginLeft="@dimen/dp3"
+            android:elevation="@dimen/dp10"
+            android:onClick="onclickCurrentLocation"
+            android:padding="@dimen/dp5"
+            android:shadowRadius="@dimen/dp5"
+            android:src="@drawable/icon_baidu_location"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rv_sign"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:layout_weight="3.5"
+        android:gravity="center">
+
+
+        <LinearLayout
+            android:id="@+id/ll_ok"
+            android:layout_width="@dimen/dp130"
+            android:layout_height="@dimen/dp130"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/radius_blue_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_ok_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="施工"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_large"/>
+
+            <TextClock
+                android:id="@+id/text_clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/dp10"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_now_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_ok"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/dp12"
+            android:visibility="visible"
+            android:text="定位中..."/>
+
+        <RelativeLayout
+            android:id="@+id/rl_location_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_ok"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/dp12"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_baidu_lot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal2"/>
+
+            <TextView
+                android:id="@+id/tv_baidu_lat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_baidu_lot"
+                android:paddingLeft="@dimen/dp10"
+                android:textSize="@dimen/font_normal2"/>
+
+            <TextView
+                android:id="@+id/tv_baidu_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_baidu_lot"
+                android:textSize="@dimen/font_normal2"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

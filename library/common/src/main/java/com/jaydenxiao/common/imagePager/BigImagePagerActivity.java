@@ -23,6 +23,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.jaydenxiao.common.R;
 import com.jaydenxiao.common.base.BaseActivity;
+import com.jaydenxiao.common.basemvp.BaseView;
 import com.jaydenxiao.common.commonwidget.StatusBarCompat;
 import com.jaydenxiao.common.commonwidget.ViewPagerFixed;
 
@@ -74,6 +75,11 @@ public class BigImagePagerActivity extends BaseActivity{
     }
 
     @Override
+    public BaseView attachPresenterView() {
+        return null;
+    }
+
+    @Override
     public void initView(Bundle savedInstanceState) {
         //设置透明状态栏
         StatusBarCompat.setTranslucent(this);
@@ -110,10 +116,7 @@ public class BigImagePagerActivity extends BaseActivity{
         addGuideView(guideGroup, startPos, imgUrls);
     }
 
-    @Override
-    public void attachPresenterView() {
 
-    }
 
     private void addGuideView(LinearLayout guideGroup, int startPos, ArrayList<String> imgUrls) {
         if(imgUrls!=null && imgUrls.size()>0){

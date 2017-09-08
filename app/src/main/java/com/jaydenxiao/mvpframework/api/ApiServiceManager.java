@@ -1,9 +1,12 @@
 package com.jaydenxiao.mvpframework.api;
 
+import com.alibaba.fastjson.JSONObject;
+import com.jaydenxiao.common.commonutils.DeviceInfoUtil;
 import com.jaydenxiao.common.https.MultipartBodyUtils;
 import com.jaydenxiao.common.https.RetrofitManager;
 import com.jaydenxiao.mvpframework.BuildConfig;
 import com.jaydenxiao.mvpframework.bean.CommonResponse;
+import com.jaydenxiao.mvpframework.bean.User;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -21,7 +24,7 @@ public class ApiServiceManager {
     /**
      * 登录模块
      */
-    private static final String URL_LOGIN = "mobileAction!login.action";
+    private static final String URL_LOGIN = "login";
     protected static final ApiService service = RetrofitManager.getRetrofit(BuildConfig.BASE_URL).create(ApiService.class);
 
     //静态内部类创建单例
@@ -41,12 +44,14 @@ public class ApiServiceManager {
      * @param pwd
      * @return
      */
-    public Observable<CommonResponse> login(String userId, String pwd) {
-        HashMap<String, String> loginInfo = new HashMap<>();
-        loginInfo.put("type", "mobile");
-        loginInfo.put("userId", userId);
-        loginInfo.put("pwd", pwd);
-        return service.requestLogin(URL_LOGIN, loginInfo);
+    public Observable<User> login(String userId, String pwd) {
+        JSONObject loginInfo = new JSONObject();
+        loginInfo.put("deviceId", DeviceInfoUtil.getMac());
+        loginInfo.put("account", "chenglin");
+        loginInfo.put("pass", "11");
+        loginInfo.put("deviceType","MO");
+        loginInfo.put("unitCode","320200");
+        return service.requestLogin(URL_LOGIN, loginInfo.toString());
     }
 
     /**

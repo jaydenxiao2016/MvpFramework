@@ -9,12 +9,12 @@ import com.jaydenxiao.common.baserx.RxManager;
  * Created by xsf
  * on 2016.07.11:55
  */
-public abstract class BasePresenter<T> {
+public abstract class BasePresenter<V extends BaseView> {
     public Context mContext;
-    public T mView;
+    public V mView;
     public RxManager mRxManage = new RxManager();
 
-    public void setV(T v) {
+    public void attachView(V v) {
         this.mView = v;
         if (mView != null) {
             onStart();

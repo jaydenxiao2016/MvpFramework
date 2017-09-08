@@ -3,17 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MvpFramework.iml" filepath="$PROJECT_DIR$/MvpFramework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MvpFramework.iml" filepath="$PROJECT_DIR$/MvpFramework.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/common/common.iml" filepath="$PROJECT_DIR$/library/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/baidu/baidu.iml" filepath="$PROJECT_DIR$/library/baidu/baidu.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/common/common.iml" filepath="$PROJECT_DIR$/library/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/irecyclerview/irecyclerview.iml" filepath="$PROJECT_DIR$/library/irecyclerview/irecyclerview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/irecyclerview/irecyclerview.iml" filepath="$PROJECT_DIR$/library/irecyclerview/irecyclerview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/jchat/jchat.iml" filepath="$PROJECT_DIR$/library/jchat/jchat.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/zxingScan/zxingScan.iml" filepath="$PROJECT_DIR$/library/zxingScan/zxingScan.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/zxingScan/zxingScan.iml" filepath="$PROJECT_DIR$/library/zxingScan/zxingScan.iml" />
     </modules>
   </component>

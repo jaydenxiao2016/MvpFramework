@@ -1,6 +1,7 @@
 package com.jaydenxiao.mvpframework.api;
 
 import com.jaydenxiao.mvpframework.bean.CommonResponse;
+import com.jaydenxiao.mvpframework.bean.User;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
@@ -15,7 +17,6 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 import rx.Observable;
@@ -28,10 +29,10 @@ import rx.Observable;
 public interface ApiService {
 
 
-    @GET("{url}")
-    Observable<CommonResponse> requestLogin(
+    @POST("{url}")
+    Observable<User> requestLogin(
             @Path("url") String url,
-            @QueryMap Map<String, String> maps);
+            @Body String string);
 
     /**
      * 上传多文件

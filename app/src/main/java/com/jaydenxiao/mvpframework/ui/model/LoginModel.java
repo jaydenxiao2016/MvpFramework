@@ -2,7 +2,7 @@ package com.jaydenxiao.mvpframework.ui.model;
 
 
 import com.jaydenxiao.mvpframework.api.ApiServiceManager;
-import com.jaydenxiao.mvpframework.bean.CommonResponse;
+import com.jaydenxiao.mvpframework.bean.User;
 import com.jaydenxiao.mvpframework.ui.contract.LoginContract;
 
 import rx.Observable;
@@ -17,7 +17,7 @@ import rx.schedulers.Schedulers;
 
 public class LoginModel implements LoginContract.Model {
     @Override
-    public Observable<CommonResponse> login(String userName, String password) {
+    public Observable<User> login(String userName, String password) {
         return ApiServiceManager.getInstance().login(userName, password)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }

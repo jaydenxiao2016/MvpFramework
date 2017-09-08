@@ -1,7 +1,6 @@
 package com.jaydenxiao.common.https;
 
 
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
@@ -9,6 +8,8 @@ import com.google.gson.GsonBuilder;
 import com.jaydenxiao.common.baseapp.BaseApplication;
 import com.jaydenxiao.common.commonutils.LogUtils;
 import com.jaydenxiao.common.commonutils.NetWorkUtils;
+import com.jaydenxiao.common.commonutils.UUIDUtil;
+import com.jaydenxiao.common.security.rsa.RSAEncyptUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +29,6 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * des:retorfit api
@@ -37,12 +37,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitManager {
     //读超时长，单位：毫秒
-    private static final int READ_TIME_OUT = 1000*60*10;
+    private static final int READ_TIME_OUT = 1000 * 60 * 10;
     //连接时长，单位：毫秒
     private static final int CONNECT_TIME_OUT = 60000;
     private static volatile RetrofitManager intstance;
     private Retrofit retrofit;
-
     /*************************缓存设置*********************/
 /*
    1. noCache 不使用缓存，全部走网络
@@ -90,12 +89,15 @@ public class RetrofitManager {
         //缓存
         File cacheFile = new File(BaseApplication.getAppContext().getCacheDir(), "cache");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
-        //增加头部信息
+        //增加头部公共信息
         Interceptor headerInterceptor = new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request build = chain.request().newBuilder()
                         .addHeader("Content-Type", "application/json; charset=utf-8")
+                        .header("secretKey", RSAEncyptUtil.getKeyByRSAandAESEncypt(JsonRequestBodyConverter.KEY))//秘钥
+                        .header("systemId", "MPP")//类型
+                        .header("SerialNumber", UUIDUtil.simpleHex())//类型
                         .build();
                 return chain.proceed(build);
             }
@@ -131,10 +133,10 @@ public class RetrofitManager {
 
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").serializeNulls().create();
         retrofit = new Retrofit.Builder()
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(baseUrl)
+                .client(okHttpClient)
+                .addConverterFactory(JsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
     }
 
@@ -144,28 +146,22 @@ public class RetrofitManager {
             return true;
         }
     }
+
     //获取单例
-    public static RetrofitManager getInstance(String baseUrl){
-        if(intstance==null){
-            synchronized (RetrofitManager.class){
-                if(intstance==null){
-                    intstance=new RetrofitManager(baseUrl);
+    public static RetrofitManager getInstance(String baseUrl) {
+        if (intstance == null) {
+            synchronized (RetrofitManager.class) {
+                if (intstance == null) {
+                    intstance = new RetrofitManager(baseUrl);
                 }
             }
         }
         return intstance;
     }
+
     //获取Retrofit
     public static Retrofit getRetrofit(String baseUrl) {
         return getInstance(baseUrl).retrofit;
-    }
-
-    /**
-     * 根据网络状况获取缓存的策略
-     */
-    @NonNull
-    public static String getCacheControl() {
-        return NetWorkUtils.isNetConnected(BaseApplication.getAppContext()) ? CACHE_CONTROL_AGE : CACHE_CONTROL_CACHE;
     }
 
     /**
@@ -173,6 +169,7 @@ public class RetrofitManager {
      * Dangerous interceptor that rewrites the server's cache-control header.
      */
     private final Interceptor mRewriteCacheControlInterceptor = new Interceptor() {
+
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
@@ -198,6 +195,4 @@ public class RetrofitManager {
             }
         }
     };
-
-
 }

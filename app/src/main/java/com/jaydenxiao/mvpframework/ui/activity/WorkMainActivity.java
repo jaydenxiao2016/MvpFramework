@@ -10,10 +10,13 @@ import android.widget.TextView;
 import com.aspsine.irecyclerview.IRecyclerView;
 import com.aspsine.irecyclerview.universaladapter.ViewHolderHelper;
 import com.aspsine.irecyclerview.universaladapter.recyclerview.CommonRecycleViewAdapter;
+import com.jaydenxiao.baidu.activity.OfflineActivity;
 import com.jaydenxiao.common.base.BaseActivity;
+import com.jaydenxiao.common.basemvp.BaseView;
 import com.jaydenxiao.common.commonutils.FormatUtil;
 import com.jaydenxiao.common.commonutils.ImageLoaderUtils;
 import com.jaydenxiao.common.commonwidget.RoundedImageView;
+import com.jaydenxiao.common.commonwidget.StatusBarCompat;
 import com.jaydenxiao.mvpframework.R;
 import com.jaydenxiao.mvpframework.app.AppCache;
 import com.jaydenxiao.mvpframework.bean.User;
@@ -33,14 +36,15 @@ import butterknife.Bind;
  */
 
 public class WorkMainActivity extends BaseActivity {
-    @Bind(R.id.model_TextView)
-    TextView model_TextView;
+
     @Bind(R.id.img_avatar)
     RoundedImageView imgAvatar;
     @Bind(R.id.tv_name)
     TextView tvName;
     @Bind(R.id.tv_code)
     TextView tvCode;
+    @Bind(R.id.model_TextView)
+    TextView modelTextView;
     @Bind(R.id.irec)
     IRecyclerView irec;
     private CommonRecycleViewAdapter<WorkMenuEntity> adapter;
@@ -53,22 +57,25 @@ public class WorkMainActivity extends BaseActivity {
     }
 
     @Override
-    public void attachPresenterView() {
+    public BaseView attachPresenterView() {
+        return null;
     }
+
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        StatusBarCompat.setTransparentForImageView(this, null);
         user = AppCache.getInstance().getUser();
         if (user == null)
             return;
         //设置头像、姓名编号
-        ImageLoaderUtils.displayAvatar(this, imgAvatar, user.getIcon());
-        tvName.setText(FormatUtil.checkValue(user.getUserName()));
+        ImageLoaderUtils.displayAvatar(this, imgAvatar, "");
+        tvName.setText(FormatUtil.checkValue(""));
         tvCode.setText(FormatUtil.checkValue(user.getUserId()));
         //初始化适配器
         adapter = new CommonRecycleViewAdapter<WorkMenuEntity>(this, R.layout.item_work_memu, getWorkMenuList()) {
             @Override
-            public void convert(final ViewHolderHelper helper, WorkMenuEntity workMenuEntity) {
+            public void convert(final ViewHolderHelper helper, final WorkMenuEntity workMenuEntity) {
                 helper.setBackgroundRes(R.id.img_memu, workMenuEntity.getIcon());
                 helper.setText(R.id.tv_memu_title, workMenuEntity.getTitle());
                 if (workMenuEntity.getNotReadCount() > 0) {
@@ -83,7 +90,7 @@ public class WorkMainActivity extends BaseActivity {
                     public void onClick(View view) {
                         switch (helper.getmPosition()) {
                             default:
-                                startActivity(SettingActivity.class);
+                                startActivity(workMenuEntity.getCls());
                                 break;
                         }
                     }
@@ -109,7 +116,7 @@ public class WorkMainActivity extends BaseActivity {
         for (int i = 0; i < 8; i++) {
             switch (i) {
                 case 0:
-                    list.add(new WorkMenuEntity("签到" + i, R.drawable.work_menu_notread, 0, SettingActivity.class));
+                    list.add(new WorkMenuEntity("签到" + i, R.drawable.work_menu_notread, 0, OfflineActivity.class));
                     break;
                 case 1:
                     list.add(new WorkMenuEntity("签到" + i, R.drawable.work_menu_record_ammeter, 0, SettingActivity.class));

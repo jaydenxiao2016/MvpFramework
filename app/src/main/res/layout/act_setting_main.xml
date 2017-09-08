@@ -8,6 +8,7 @@
     android:orientation="vertical">
     <!--    波浪背景和头像-->
     <RelativeLayout
+        android:id="@+id/rl_root"
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:background="@drawable/selector_setting_bg"

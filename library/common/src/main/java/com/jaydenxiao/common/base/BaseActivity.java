@@ -12,6 +12,7 @@ import android.view.Window;
 import com.jaydenxiao.common.R;
 import com.jaydenxiao.common.baseapp.AppManager;
 import com.jaydenxiao.common.basemvp.BasePresenter;
+import com.jaydenxiao.common.basemvp.BaseView;
 import com.jaydenxiao.common.baserx.RxManager;
 import com.jaydenxiao.common.commonutils.TUtil;
 import com.jaydenxiao.common.commonutils.ToastUitl;
@@ -59,8 +60,9 @@ import butterknife.ButterKnife;
 //    public void initView() {
 //    }
 //}
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
-    public T mPresenter;
+public abstract class BaseActivity<V extends BaseView, P extends BasePresenter> extends AppCompatActivity {
+    public P mPresenter;
+    protected V mView;
     public Context mContext;
     private volatile RxManager mRxManager;
     /**
@@ -76,10 +78,15 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         ButterKnife.bind(this);
         mContext = this;
         mPresenter = TUtil.getT(this, 0);
+        mView=this.attachPresenterView();
         if (mPresenter != null) {
             mPresenter.mContext = this;
+            if(mView!=null){
+                mPresenter.attachView(mView);
+            }else{
+                throw new NullPointerException("presenter不为空时，view不能为空");
+            }
         }
-        this.attachPresenterView();
         this.initView(savedInstanceState);
     }
 
@@ -103,7 +110,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     public abstract int getLayoutId();
 
     //简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
-    public abstract void attachPresenterView();
+    public abstract V attachPresenterView();
 
     //初始化view
     public abstract void initView(Bundle savedInstanceState);

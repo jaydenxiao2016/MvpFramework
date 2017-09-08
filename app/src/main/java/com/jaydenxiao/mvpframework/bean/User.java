@@ -1,7 +1,6 @@
 package com.jaydenxiao.mvpframework.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import java.io.Serializable;
 
 /**
  * des:用户
@@ -9,127 +8,33 @@ import android.os.Parcelable;
  * on 2016.09.15:11
  */
 
-public class User implements Parcelable {
-    private int user_id;
-    private String pwd;
-    private String icon;//头像
-    private String SubCompanyId;
-    private String SubCompanyName;
-    private String SubCompanyUid;
-    private String companyId;
-    private String companyName;
-    private String companyUid;
-    private String departId;
-    private String departName;
-    private String departUid;
-    private String userUid;
+public class User implements Serializable {
+    private String token;
+    private String imToken;
     private String userId;
-    private String userPwd;
-    private String userName;
-    private boolean rememberPwd;
+    private String account;
+    private String sysCode;
+    private String tokenTime;
+    private String randomVal;
+    private String effectiveTime;
+    private String invalidTime;
+    private String createDate;
+    private String hisignPn;
 
-    public String getDepartName() {
-        return departName;
+    public String getToken() {
+        return token;
     }
 
-    public void setDepartName(String departName) {
-        this.departName = departName;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public String getImToken() {
+        return imToken;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public String getSubCompanyId() {
-        return SubCompanyId;
-    }
-
-    public void setSubCompanyId(String subCompanyId) {
-        SubCompanyId = subCompanyId;
-    }
-
-    public String getSubCompanyName() {
-        return SubCompanyName;
-    }
-
-    public void setSubCompanyName(String subCompanyName) {
-        SubCompanyName = subCompanyName;
-    }
-
-    public String getSubCompanyUid() {
-        return SubCompanyUid;
-    }
-
-    public void setSubCompanyUid(String subCompanyUid) {
-        SubCompanyUid = subCompanyUid;
-    }
-
-    public String getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getCompanyUid() {
-        return companyUid;
-    }
-
-    public void setCompanyUid(String companyUid) {
-        this.companyUid = companyUid;
-    }
-
-    public String getDepartId() {
-        return departId;
-    }
-
-    public void setDepartId(String departId) {
-        this.departId = departId;
-    }
-
-    public String getDepartUid() {
-        return departUid;
-    }
-
-    public void setDepartUid(String departUid) {
-        this.departUid = departUid;
-    }
-
-    public String getUserUid() {
-        return userUid;
-    }
-
-    public void setUserUid(String userUid) {
-        this.userUid = userUid;
+    public void setImToken(String imToken) {
+        this.imToken = imToken;
     }
 
     public String getUserId() {
@@ -140,109 +45,69 @@ public class User implements Parcelable {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getAccount() {
+        return account;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
-    public User() {
+    public String getSysCode() {
+        return sysCode;
     }
 
-    public boolean isRememberPwd() {
-        return rememberPwd;
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
     }
 
-    public String getUserPwd() {
-        return userPwd;
+    public String getTokenTime() {
+        return tokenTime;
     }
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
+    public void setTokenTime(String tokenTime) {
+        this.tokenTime = tokenTime;
     }
 
-    public void setRememberPwd(boolean rememberPwd) {
-        this.rememberPwd = rememberPwd;
+    public String getRandomVal() {
+        return randomVal;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id=" + user_id +
-                ", pwd='" + pwd + '\'' +
-                ", icon='" + icon + '\'' +
-                ", SubCompanyId='" + SubCompanyId + '\'' +
-                ", SubCompanyName='" + SubCompanyName + '\'' +
-                ", SubCompanyUid='" + SubCompanyUid + '\'' +
-                ", companyId='" + companyId + '\'' +
-                ", companyName='" + companyName + '\'' +
-                ", companyUid='" + companyUid + '\'' +
-                ", departId='" + departId + '\'' +
-                ", departName='" + departName + '\'' +
-                ", departUid='" + departUid + '\'' +
-                ", userUid='" + userUid + '\'' +
-                ", userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
-                '}';
+    public void setRandomVal(String randomVal) {
+        this.randomVal = randomVal;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getEffectiveTime() {
+        return effectiveTime;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.user_id);
-        dest.writeString(this.pwd);
-        dest.writeString(this.icon);
-        dest.writeString(this.SubCompanyId);
-        dest.writeString(this.SubCompanyName);
-        dest.writeString(this.SubCompanyUid);
-        dest.writeString(this.companyId);
-        dest.writeString(this.companyName);
-        dest.writeString(this.companyUid);
-        dest.writeString(this.departId);
-        dest.writeString(this.departName);
-        dest.writeString(this.departUid);
-        dest.writeString(this.userUid);
-        dest.writeString(this.userId);
-        dest.writeString(this.userPwd);
-        dest.writeString(this.userName);
-        dest.writeByte(this.rememberPwd ? (byte) 1 : (byte) 0);
+    public void setEffectiveTime(String effectiveTime) {
+        this.effectiveTime = effectiveTime;
     }
 
-    protected User(Parcel in) {
-        this.user_id = in.readInt();
-        this.pwd = in.readString();
-        this.icon = in.readString();
-        this.SubCompanyId = in.readString();
-        this.SubCompanyName = in.readString();
-        this.SubCompanyUid = in.readString();
-        this.companyId = in.readString();
-        this.companyName = in.readString();
-        this.companyUid = in.readString();
-        this.departId = in.readString();
-        this.departName = in.readString();
-        this.departUid = in.readString();
-        this.userUid = in.readString();
-        this.userId = in.readString();
-        this.userPwd = in.readString();
-        this.userName = in.readString();
-        this.rememberPwd = in.readByte() != 0;
+    public String getInvalidTime() {
+        return invalidTime;
     }
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel source) {
-            return new User(source);
-        }
+    public void setInvalidTime(String invalidTime) {
+        this.invalidTime = invalidTime;
+    }
 
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getHisignPn() {
+        return hisignPn;
+    }
+
+    public void setHisignPn(String hisignPn) {
+        this.hisignPn = hisignPn;
+    }
+
+
 }

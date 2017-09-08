@@ -32,7 +32,7 @@ import java.io.File;
  */
 public class BaseAppConfig {
 
-    public static final String DEBUG_TAG = "logger";// LogCat的标记
+    public static final String DEBUG_TAG = "jaydenxiao";// LogCat的标记
     /**
      * 图片服务器地址
      */

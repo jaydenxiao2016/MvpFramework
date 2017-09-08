@@ -37,6 +37,7 @@
                 android:layout_margin="@dimen/dp10"
                 android:hint="@string/str_phone"
                 android:textSize="@dimen/font_normal"
+                android:text="15999761380"
                 app:met_clearButton="true"
                 app:met_errorColor="@color/red"
                 app:met_floatingLabel="highlight" />
@@ -48,6 +49,7 @@
                 android:layout_margin="@dimen/dp10"
                 android:hint="@string/str_password"
                 android:inputType="textPassword"
+                android:text="123456"
                 android:textSize="@dimen/font_normal"
                 app:met_clearButton="true"
                 app:met_errorColor="@color/red"

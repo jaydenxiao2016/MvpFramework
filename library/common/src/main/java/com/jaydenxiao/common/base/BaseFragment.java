@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jaydenxiao.common.basemvp.BasePresenter;
+import com.jaydenxiao.common.basemvp.BaseView;
 import com.jaydenxiao.common.baserx.RxManager;
 import com.jaydenxiao.common.commonutils.TUtil;
 import com.jaydenxiao.common.commonutils.ToastUitl;
@@ -56,9 +57,10 @@ import butterknife.ButterKnife;
 //    public void initView() {
 //    }
 //}
-public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
+public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V>> extends Fragment {
     protected View rootView;
-    public T mPresenter;
+    public P mPresenter;
+    protected V mView;
     private volatile RxManager mRxManager;
     /**
      * 状态页面管理
@@ -77,10 +79,15 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
         }
         ButterKnife.bind(this, rootView);
         mPresenter = TUtil.getT(this, 0);
+        mView=this.attachPresenterView();
         if (mPresenter != null) {
             mPresenter.mContext = this.getContext();
+            if(mView!=null){
+                mPresenter.attachView(mView);
+            }else{
+                throw new NullPointerException("presenter不为空时，view不能为空");
+            }
         }
-        initPresenter();
         initView(savedInstanceState);
         return rootView;
     }
@@ -92,7 +99,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     public abstract int getLayoutId();
 
     //简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
-    public abstract void initPresenter();
+    public abstract V attachPresenterView();
 
     //初始化view
     public abstract void initView(Bundle savedInstanceState);

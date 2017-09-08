@@ -9,12 +9,13 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.jaydenxiao.mvpframework.R;
-import com.jaydenxiao.mvpframework.ui.contract.LoginContract;
-import com.jaydenxiao.mvpframework.ui.presenter.LoginPresenter;
 import com.jaydenxiao.common.base.BaseActivity;
 import com.jaydenxiao.common.commonutils.FormatUtil;
 import com.jaydenxiao.common.commonutils.SoftKeyBoardStateHelper;
+import com.jaydenxiao.common.commonwidget.StatusBarCompat;
+import com.jaydenxiao.mvpframework.R;
+import com.jaydenxiao.mvpframework.ui.contract.LoginContract;
+import com.jaydenxiao.mvpframework.ui.presenter.LoginPresenter;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -31,7 +32,7 @@ import butterknife.OnClick;
  * 最后修改时间：2017/5/18
  */
 
-public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View{
+public class LoginActivity extends BaseActivity<LoginContract.View,LoginPresenter> implements LoginContract.View{
 
 
     @Bind(R.id.met_user_name)
@@ -65,12 +66,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     @Override
-    public void attachPresenterView() {
-        mPresenter.setV(this);
+    public LoginContract.View attachPresenterView() {
+        return this;
     }
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        StatusBarCompat.setTransparentForImageView(this,null);
         mSoftKeyBoardStateHelper=new SoftKeyBoardStateHelper(slRoot);
         mSoftKeyBoardStateHelper.addSoftKeyboardStateListener(mKeyboardStateListener=new SoftKeyBoardStateHelper.SoftKeyboardStateListener() {
             @Override

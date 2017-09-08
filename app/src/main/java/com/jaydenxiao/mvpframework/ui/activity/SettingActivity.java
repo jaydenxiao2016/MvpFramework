@@ -2,9 +2,11 @@ package com.jaydenxiao.mvpframework.ui.activity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jaydenxiao.common.base.BaseActivity;
+import com.jaydenxiao.common.basemvp.BaseView;
 import com.jaydenxiao.common.commonutils.ImageLoaderUtils;
 import com.jaydenxiao.common.commonwidget.RoundedImageView;
 import com.jaydenxiao.common.commonwidget.StatusBarCompat;
@@ -23,6 +25,8 @@ import butterknife.OnClick;
  */
 
 public class SettingActivity extends BaseActivity {
+    @Bind(R.id.rl_root)
+    RelativeLayout rlRoot;
     @Bind(R.id.iv_back)
     ImageView ivBack;
     @Bind(R.id.wave_view)
@@ -40,12 +44,13 @@ public class SettingActivity extends BaseActivity {
     }
 
     @Override
-    public void attachPresenterView() {
-
+    public BaseView attachPresenterView() {
+        return null;
     }
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        StatusBarCompat.setTransparentForImageView(this,null);
         //设置头像
         ImageLoaderUtils.displayAvatar(this, imgLogo, "");
     }

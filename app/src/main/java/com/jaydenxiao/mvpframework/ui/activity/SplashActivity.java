@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.jaydenxiao.common.base.BaseActivity;
+import com.jaydenxiao.common.basemvp.BaseView;
 import com.jaydenxiao.common.baserx.RxSchedulers;
 import com.jaydenxiao.mvpframework.R;
 
@@ -28,8 +29,8 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
-    public void attachPresenterView() {
-
+    public BaseView attachPresenterView() {
+        return null;
     }
 
     @Override

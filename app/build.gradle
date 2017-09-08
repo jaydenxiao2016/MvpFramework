@@ -53,14 +53,14 @@ android {
     productFlavors {
         JDebug {
             applicationId project.ext.applicationDebugId
-            buildConfigField "String", "BASE_URL", "\"https://JDebug.com\""
+            buildConfigField "String", "BASE_URL", "\"http://211.157.146.6:9937/mpp/api/\""
             manifestPlaceholders = [
                     app_name: project.ext.debugAppName
             ]
         }
         JRelease {
             applicationId project.ext.applicationReleaseId
-            buildConfigField "String", "BASE_URL", "\"https://JRelease.com\""
+            buildConfigField "String", "BASE_URL", "\"http://211.157.146.6:9937/mpp/api/\""
             manifestPlaceholders = [
                     app_name: project.ext.ReleaseAppName
             ]
@@ -79,7 +79,9 @@ dependencies {
     })
     compile project(':library:irecyclerview')
     compile project(':library:zxingScan')
-    compile project(':library:jchat')
+//    compile project(':library:thirdparty')
+//    compile project(':library:jchat')
+    compile project(':library:baidu')
     testCompile 'junit:junit:4.12'
 
 }

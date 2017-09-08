@@ -108,6 +108,18 @@
 -keep class com.alipay.android.app.IRemoteServiceCallback{*;}
 -keep class com.alipay.android.app.lib.ResourceMap{*;}
 
+#百度地图
+-dontwarn com.baidu.**
+-dontwarn vi.com.**
+-dontwarn pvi.com.**
+
+-keep class com.baidu.** {*;}
+-keep class vi.com.** {*;}
+
+-keep class com.sinovoice.** {*;}
+-keep class pvi.com.** {*;}
+
+
 #-------------------------------------------------------------------------
 
 

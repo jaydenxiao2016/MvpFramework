@@ -1,6 +1,8 @@
 package com.jaydenxiao.jchat.model;
 
 
+import com.jaydenxiao.jchat.listener.IMGetUserInfoListener;
+
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.model.UserInfo;
 

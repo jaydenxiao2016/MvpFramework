@@ -22,7 +22,7 @@ public class BaseApplication extends Application {
         PageManager.initInApp(this);
     }
 
-    public static Context getAppContext() {
+    public static Application getAppContext() {
         return baseApplication;
     }
     public static Resources getAppResources() {
